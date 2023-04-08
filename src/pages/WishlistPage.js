@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { deleteWishlist, getWishlist } from '../api';
-import Button from '../components/Button';
-import Container from '../components/Container';
-import CourseItem from '../components/CourseItem';
-import Warn from '../components/Warn';
-import closeButton from '../assets/closeButton.svg';
-import styles from './WishlistPage.module.css';
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { deleteWishlist, getWishlist } from "../api";
+import Button from "../components/Button";
+import Container from "../components/Container";
+import CourseItem from "../components/CourseItem";
+import Warn from "../components/Warn";
+import closeButton from "../assets/closeButton.svg";
+import styles from "./WishlistPage.module.css";
 
 function WishlistPage() {
   const [courses, setCourses] = useState([]);
+  const location = useLocation();
+  console.log(location.state);
 
   const handleDelete = (courseSlug) => {
     deleteWishlist(courseSlug);
